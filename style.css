@@ -1,0 +1,36 @@
+body {
+  background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+.soundboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 0 10px;
+}
+button {
+  background: #ff006e;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+button:hover {
+  background: #d9005a;
+  transform: scale(1.05);
+}
+button:active {
+  transform: scale(0.97);
+}
