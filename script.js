@@ -1,32 +1,41 @@
+// Tutaj wpisz swoje dźwięki: [nazwa przycisku, plik dźwiękowy z rozszerzeniem]
 const sounds = [
-  { name: "kurwa", label: "🖕 kurwa" },
-  { name: "noichuj", label: "😐 no i chuj" },
-  { name: "ruchanie", label: "🍑 ruchanie?" },
-  { name: "pierdolisz", label: "🤯 co ty pierdolisz?" },
-  { name: "pucy", label: "🚫 nie wal pucy" },
-  { name: "niepijeniepale", label: "💪 nie pije nie pale konia nie wale" },
-  { name: "smiech", label: "😂 (śmiech)" },
-  { name: "suszy", label: "🥴 ale mnie suszy" },
-  { name: "dior", label: "🧴 dior sauvage" },
-  { name: "piatek", label: "🎉 piątek" },
-  { name: "branzo", label: "✊ branzo" },
-  { name: "16cm", label: "📏 16cm" },
-  { name: "zjadl", label: "🍔 ale bym coś zjadł" },
-  { name: "wyjebane", label: "🧘 wyjebane mam" },
-  { name: "pierdol", label: "🤬 pierdol się ty się wycisz" },
-  { name: "babcia", label: "👵 babcia z wąsami" },
-  { name: "npctoska", label: "🤖 npctoska" },
-  { name: "spagety", label: "🍝 czypa spagety" },
-  { name: "chuj2", label: "🟥 chuj do kwadratu" },
-  { name: "kutas", label: "🍆 kutas" }
+  ["🖕 kurwa", "kurwa.m4a"],
+  ["😐 no i chuj", "noichuj.mp3"],
+  ["🍑 ruchanie?", "ruchanie.m4a"],
+  ["🤯 co ty pierdolisz?", "pierdolisz.mp3"],
+  ["🚫 nie wal pucy", "pucy.mp3"],
+  ["💪 nie pije nie pale konia nie wale", "niepijeniepale.mp3"],
+  ["😂 (śmiech)", "smiech.mp3"],
+  ["🥴 ale mnie suszy", "suszy.mp3"],
+  ["🧴 dior sauvage", "dior.mp3"],
+  ["🎉 piątek", "piatek.mp3"],
+  ["✊ branzo", "branzo.mp3"],
+  ["📏 16cm", "16cm.mp3"],
+  ["🍔 ale bym coś zjadł", "zjadl.mp3"],
+  ["🧘 wyjebane mam", "wyjebane.mp3"],
+  ["🤬 pierdol się ty się wycisz", "pierdol.mp3"],
+  ["👵 babcia z wąsami", "babcia.mp3"],
+  ["🤖 npctoska", "npctoska.mp3"],
+  ["🍝 czypa spagety", "spagety.mp3"],
+  ["🟥 chuj do kwadratu", "chuj2.mp3"],
+  ["🍆 kutas", "kutas.mp3"]
 ];
-const container = document.getElementById('soundboard');
-sounds.forEach(sound => {
-  const btn = document.createElement('button');
-  btn.innerText = sound.label;
-  btn.onclick = () => {
-    const audio = new Audio(`sounds/${sound.name}.mp3`);
-    audio.play();
-  };
-  container.appendChild(btn);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('soundboard');
+
+  sounds.forEach(([label, filename]) => {
+    const btn = document.createElement('button');
+    btn.textContent = label;
+
+    btn.addEventListener('click', () => {
+      const audio = new Audio(`sounds/${filename}`);
+      audio.play().catch(err => {
+        console.error("Błąd odtwarzania audio:", err);
+      });
+    });
+
+    container.appendChild(btn);
+  });
 });
